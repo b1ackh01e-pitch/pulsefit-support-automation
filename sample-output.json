@@ -1,0 +1,213 @@
+[
+  {
+    "ticket_id": 10001,
+    "created_at": "2026-08-01T10:00:00Z",
+    "updated_at": "2026-08-01T10:01:30Z",
+    "customer_email": "anna.test@gmail.com",
+    "subject": "Please cancel",
+    "message": "Hi, I don't want to continue my subscription. Please cancel it.",
+    "product": "pulsefit",
+    "subscriptions": [
+      {
+        "id": "sub_test_001",
+        "product": "pulsefit",
+        "status": "active",
+        "billing_provider": "stripe"
+      }
+    ],
+    "ai_mode": "mock",
+    "is_valid": true,
+    "error_message": null,
+    "execution_status": "Success",
+    "detected_intent": "cancellation",
+    "confidence": 1,
+    "classifier_valid": true,
+    "matching_subscription_count": 1,
+    "action_type": "cancellation",
+    "action_status": "simulated_success",
+    "details": {
+      "reason": null,
+      "simulated": true,
+      "subscription_id": "sub_test_001",
+      "billing_provider": "stripe"
+    },
+    "customer_response": {
+      "subject": "Your PulseFit support request",
+      "message": "Your subscription has been cancelled."
+    },
+    "timestamp": "2026-10-09T08:45:55.657Z"
+  },
+  {
+    "ticket_id": 10002,
+    "created_at": "2026-08-01T11:00:00Z",
+    "updated_at": "2026-08-01T11:08:00Z",
+    "customer_email": "mark@example.com",
+    "subject": "Why was I charged?",
+    "message": "I was charged again today. Please explain this and cancel my subscription.",
+    "product": "pulsefit",
+    "subscriptions": [
+      {
+        "id": "sub_test_002",
+        "product": "pulsefit",
+        "status": "active",
+        "billing_provider": "paypal"
+      }
+    ],
+    "ai_mode": "mock",
+    "is_valid": true,
+    "error_message": null,
+    "execution_status": "Success",
+    "detected_intent": "cancellation_with_billing_clarification",
+    "confidence": 1,
+    "classifier_valid": true,
+    "matching_subscription_count": 1,
+    "action_type": "cancellation",
+    "action_status": "simulated_success",
+    "details": {
+      "reason": null,
+      "simulated": true,
+      "subscription_id": "sub_test_002",
+      "billing_provider": "paypal",
+      "billing_context": {
+        "provider": "paypal",
+        "charge_verified": false,
+        "instruction": "No transaction history is available. Do not invent the reason, amount, or date of a charge. Billing clarification requires review."
+      }
+    },
+    "customer_response": {
+      "subject": "Your PulseFit support request",
+      "message": "Your subscription has been cancelled. Your billing question requires further review."
+    },
+    "timestamp": "2026-10-09T08:45:55.762Z"
+  },
+  {
+    "ticket_id": 10003,
+    "created_at": "2026-08-01T12:00:00Z",
+    "updated_at": "2026-08-01T12:02:00Z",
+    "customer_email": "sara@example.com",
+    "subject": "Refund",
+    "message": "I forgot to cancel and was charged yesterday. Can I get my money back?",
+    "product": "pulsefit",
+    "subscriptions": [
+      {
+        "id": "sub_test_003",
+        "product": "pulsefit",
+        "status": "active",
+        "billing_provider": "stripe"
+      },
+      {
+        "id": "sub_test_004",
+        "product": "pulsefit",
+        "status": "not_active",
+        "billing_provider": "stripe"
+      },
+      {
+        "id": "sub_test_007",
+        "product": "otherapp",
+        "status": "active",
+        "billing_provider": "stripe"
+      }
+    ],
+    "ai_mode": "mock",
+    "is_valid": true,
+    "error_message": null,
+    "execution_status": "Success",
+    "detected_intent": "refund",
+    "confidence": 1,
+    "classifier_valid": true,
+    "matching_subscription_count": 2,
+    "action_type": "refund",
+    "action_status": "simulated_success",
+    "details": {
+      "reason": null,
+      "simulated": true,
+      "rule": "Assessment only: at least one matching subscription regardless of status"
+    },
+    "customer_response": {
+      "subject": "Your PulseFit support request",
+      "message": "Your refund has been processed."
+    },
+    "timestamp": "2026-10-09T08:45:55.867Z"
+  },
+  {
+    "ticket_id": 10004,
+    "created_at": "2026-08-01T13:00:00Z",
+    "updated_at": "2026-08-01T13:00:30Z",
+    "customer_email": "tech.user@example.com",
+    "subject": "App issue",
+    "message": "The workout screen keeps freezing.",
+    "product": "pulsefit",
+    "subscriptions": [],
+    "ai_mode": "mock",
+    "is_valid": true,
+    "error_message": null,
+    "execution_status": "Success",
+    "detected_intent": "technical_issue",
+    "confidence": 1,
+    "classifier_valid": true,
+    "matching_subscription_count": 0,
+    "action_type": "troubleshooting",
+    "action_status": "not_executed",
+    "details": {
+      "reason": "No billing action; troubleshooting instructions provided",
+      "simulated": true,
+      "response_context": "Ask the customer to update the app, restart the device, and retry.",
+      "queue": null
+    },
+    "customer_response": {
+      "subject": "Your PulseFit support request",
+      "message": "Please update the app, restart the device, and retry."
+    },
+    "timestamp": "2026-10-09T08:45:55.919Z"
+  },
+  {
+    "ticket_id": 10005,
+    "created_at": "2026-08-01T14:00:00Z",
+    "updated_at": "2026-08-01T14:03:00Z",
+    "customer_email": "broken@example.com",
+    "subject": "Help",
+    "message": null,
+    "product": "pulsefit",
+    "subscriptions": [],
+    "ai_mode": "mock",
+    "is_valid": false,
+    "error_message": "Invalid required fields: message",
+    "execution_status": "Failed",
+    "timestamp": "2026-10-09T08:45:56.010Z",
+    "detected_intent": null,
+    "matching_subscription_count": null,
+    "action_type": "none",
+    "action_status": "not_executed",
+    "customer_response": null
+  },
+  {
+    "ticket_id": 10006,
+    "created_at": "2026-08-01T15:00:00Z",
+    "updated_at": "2026-08-01T15:01:00Z",
+    "customer_email": "alex@example.com",
+    "subject": "Question about workouts",
+    "message": "How many workouts per week do you recommend?",
+    "product": "pulsefit",
+    "subscriptions": [],
+    "ai_mode": "mock",
+    "is_valid": true,
+    "error_message": null,
+    "execution_status": "Success",
+    "detected_intent": "other",
+    "confidence": 1,
+    "classifier_valid": true,
+    "matching_subscription_count": 0,
+    "action_type": "manual_review",
+    "action_status": "queued",
+    "details": {
+      "reason": "General question requires support review",
+      "simulated": true,
+      "queue": "general_support"
+    },
+    "customer_response": {
+      "subject": "Your PulseFit support request",
+      "message": "Your request has been passed to our support team for review."
+    },
+    "timestamp": "2026-10-09T08:45:55.998Z"
+  }
+]

@@ -1,0 +1,59 @@
+[
+  {
+    "ticket_id": 20001,
+    "customer_email": "no.active@example.com",
+    "subject": "Cancel subscription",
+    "message": "Please cancel my PulseFit subscription.",
+    "product": "pulsefit",
+    "subscriptions": [
+      {
+        "id": "inactive",
+        "product": "pulsefit",
+        "status": "not_active",
+        "billing_provider": "stripe"
+      },
+      {
+        "id": "other",
+        "product": "otherapp",
+        "status": "active",
+        "billing_provider": "stripe"
+      }
+    ]
+  },
+  {
+    "ticket_id": 20002,
+    "customer_email": "two.active@example.com",
+    "subject": "Cancel subscription",
+    "message": "Please cancel my PulseFit subscription.",
+    "product": "pulsefit",
+    "subscriptions": [
+      {
+        "id": "active_1",
+        "product": "pulsefit",
+        "status": "active",
+        "billing_provider": "stripe"
+      },
+      {
+        "id": "active_2",
+        "product": "pulsefit",
+        "status": "active",
+        "billing_provider": "paypal"
+      }
+    ]
+  },
+  {
+    "ticket_id": 20003,
+    "customer_email": "no.match@example.com",
+    "subject": "Refund request",
+    "message": "Please refund my PulseFit payment.",
+    "product": "pulsefit",
+    "subscriptions": [
+      {
+        "id": "other",
+        "product": "otherapp",
+        "status": "active",
+        "billing_provider": "stripe"
+      }
+    ]
+  }
+]

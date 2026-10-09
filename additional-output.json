@@ -1,0 +1,121 @@
+[
+  {
+    "ticket_id": 20001,
+    "customer_email": "no.active@example.com",
+    "subject": "Cancel subscription",
+    "message": "Please cancel my PulseFit subscription.",
+    "product": "pulsefit",
+    "subscriptions": [
+      {
+        "id": "inactive",
+        "product": "pulsefit",
+        "status": "not_active",
+        "billing_provider": "stripe"
+      },
+      {
+        "id": "other",
+        "product": "otherapp",
+        "status": "active",
+        "billing_provider": "stripe"
+      }
+    ],
+    "ai_mode": "mock",
+    "is_valid": true,
+    "error_message": null,
+    "execution_status": "Success",
+    "detected_intent": "cancellation",
+    "confidence": 1,
+    "classifier_valid": true,
+    "matching_subscription_count": 1,
+    "action_type": "cancellation",
+    "action_status": "not_executed",
+    "details": {
+      "reason": "No matching active subscription",
+      "simulated": true
+    },
+    "customer_response": {
+      "subject": "Your PulseFit support request",
+      "message": "We could not find an active PulseFit subscription, so no cancellation was performed."
+    },
+    "timestamp": "2026-10-09T08:46:36.952Z"
+  },
+  {
+    "ticket_id": 20002,
+    "customer_email": "two.active@example.com",
+    "subject": "Cancel subscription",
+    "message": "Please cancel my PulseFit subscription.",
+    "product": "pulsefit",
+    "subscriptions": [
+      {
+        "id": "active_1",
+        "product": "pulsefit",
+        "status": "active",
+        "billing_provider": "stripe"
+      },
+      {
+        "id": "active_2",
+        "product": "pulsefit",
+        "status": "active",
+        "billing_provider": "paypal"
+      }
+    ],
+    "ai_mode": "mock",
+    "is_valid": true,
+    "error_message": null,
+    "execution_status": "Success",
+    "detected_intent": "cancellation",
+    "confidence": 1,
+    "classifier_valid": true,
+    "matching_subscription_count": 2,
+    "action_type": "cancellation",
+    "action_status": "requires_review",
+    "details": {
+      "reason": "Multiple matching active subscriptions",
+      "simulated": true,
+      "subscription_ids": [
+        "active_1",
+        "active_2"
+      ]
+    },
+    "customer_response": {
+      "subject": "Your PulseFit support request",
+      "message": "Your subscription has not been cancelled. We found multiple active subscriptions, so your request needs review."
+    },
+    "timestamp": "2026-10-09T08:46:36.953Z"
+  },
+  {
+    "ticket_id": 20003,
+    "customer_email": "no.match@example.com",
+    "subject": "Refund request",
+    "message": "Please refund my PulseFit payment.",
+    "product": "pulsefit",
+    "subscriptions": [
+      {
+        "id": "other",
+        "product": "otherapp",
+        "status": "active",
+        "billing_provider": "stripe"
+      }
+    ],
+    "ai_mode": "mock",
+    "is_valid": true,
+    "error_message": null,
+    "execution_status": "Success",
+    "detected_intent": "refund",
+    "confidence": 1,
+    "classifier_valid": true,
+    "matching_subscription_count": 0,
+    "action_type": "refund",
+    "action_status": "not_executed",
+    "details": {
+      "reason": "No subscription matches ticket product",
+      "simulated": true,
+      "rule": "Assessment only: at least one matching subscription regardless of status"
+    },
+    "customer_response": {
+      "subject": "Your PulseFit support request",
+      "message": "We could not find a PulseFit subscription for this request, so no refund was issued."
+    },
+    "timestamp": "2026-10-09T08:46:37.155Z"
+  }
+]

@@ -1,0 +1,14 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:2.42.6
+    ports:
+      - "127.0.0.1:5678:5678"
+    environment:
+      TZ: Europe/Kyiv
+      GENERIC_TIMEZONE: Europe/Kyiv
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: "true"
+    volumes:
+      - n8n_data:/home/node/.n8n
+      - ./logs:/home/node/.n8n-files
+volumes:
+  n8n_data:

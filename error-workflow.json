@@ -1,0 +1,104 @@
+{
+  "id": "pulsefitErrorHandler2026",
+  "name": "PulseFit \u2014 Execution Error Handler",
+  "active": false,
+  "nodes": [
+    {
+      "id": "error_trigger",
+      "name": "Execution failed",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        0
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "error_record",
+      "name": "Assemble execution error",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ],
+      "parameters": {
+        "jsCode": "return $input.all().map((item,i)=>{const e=item.json;return {json:{timestamp:new Date().toISOString(),workflow_id:e.workflow?.id??null,workflow_name:e.workflow?.name??null,failed_execution_id:e.execution?.id??null,last_node:e.execution?.lastNodeExecuted??null,execution_status:'Failed',error_message:e.execution?.error?.message??e.trigger?.error?.message??'Unknown execution error'},pairedItem:{item:i}};});"
+      }
+    },
+    {
+      "id": "error_json",
+      "name": "Execution error JSON",
+      "type": "n8n-nodes-base.convertToFile",
+      "typeVersion": 1.1,
+      "position": [
+        480,
+        0
+      ],
+      "parameters": {
+        "operation": "toJson",
+        "mode": "each",
+        "binaryPropertyName": "data",
+        "options": {
+          "format": true,
+          "fileName": "={{ \"execution-error-\" + $execution.id + \".json\" }}"
+        }
+      }
+    },
+    {
+      "id": "error_write",
+      "name": "Save execution error",
+      "type": "n8n-nodes-base.readWriteFile",
+      "typeVersion": 1,
+      "position": [
+        720,
+        0
+      ],
+      "parameters": {
+        "operation": "write",
+        "fileName": "={{ \"/home/node/.n8n-files/\" + $binary.data.fileName }}",
+        "dataPropertyName": "data",
+        "options": {}
+      }
+    }
+  ],
+  "connections": {
+    "Execution failed": {
+      "main": [
+        [
+          {
+            "node": "Assemble execution error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Assemble execution error": {
+      "main": [
+        [
+          {
+            "node": "Execution error JSON",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Execution error JSON": {
+      "main": [
+        [
+          {
+            "node": "Save execution error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  }
+}
